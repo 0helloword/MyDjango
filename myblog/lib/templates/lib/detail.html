@@ -1,0 +1,43 @@
+﻿<h2>Book List</h2>
+<table>
+	<tr>
+		<td>书名</td>
+		<td>作者</td>
+		<td>出版社</td>
+		<td>出版日期</td>
+	</tr>
+{% for book in book_list.all %}
+	<tr>
+		<td>{{book.name}}</td>
+		<td>{{book.author}}</td>
+		<td>{{book.pub_house}}</td>
+		<td>{{book.pub_date}}</td>
+		<td><a href="{% url 'lib:delBook' book.id %}">删除</a></td>
+	</tr>
+{% endfor %}
+</table>
+
+<h4>查询</h4>
+<form action="{% url 'lib:searchBook' %}" method="post" name="searchBook">
+	{% csrf_token %}
+	<p><span>书名：</span><input type="text" name="name">
+	<input type="submit" value="查询" ></p>
+</form>
+
+<h4>添加</h4>
+<form action="{% url 'lib:addBook' %}" method="post" name="addBook">
+	{% csrf_token %}
+	<p><span>书名：</span><input type="text" name="name"></p>
+	<p><span>作者：</span><input type="text" name="author"></p>
+	<p><span>出版社：</span><input type="text" name="pub_house">
+	<input type="submit" value="提交"></p>
+</form>
+
+<h4>编辑</h4>	
+<form action="{% url 'lib:editBook' %}" method="post" name="editBook">
+	{% csrf_token %}
+	<p><span>书名：</span><input type="text" name="name"></p>
+	<p><span>作者：</span><input type="text" name="author"></p>
+	<p><span>出版社：</span><input type="text" name="pub_house">
+	<input type="submit" value="提交"></p>
+</form>	
