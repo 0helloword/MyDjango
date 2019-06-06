@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>自强学堂</title>
+</head>
+<a href="/learn/add2/4/5">计算4+5</a>
+<p>{{string1}}</p>
+<p>{{string2}}</p>
+<p>教程列表：
+{% for i in list %}
+{{i}}
+{% endfor %}
+</p>
+<p>字典列表：
+{% for key,value in dict.items %}
+{{key}}:{{value}}
+{% endfor %}
+</p>
+<p>字典列表：
+站点：{{dict.site}},内容：{{dict.content}}
+<p>
+{% for item in list2 %}
+{{item}}{% if not forloop.last %},
+{% endif %}
+{% endfor %}
+</p>
+<ul>
+{% for i in list3 %}
+	<li>{{i}}</li>
+{% empty %}
+	<li>抱歉，列表为空</li>
+{% endfor %}
+</ul>
+成绩={{var}}:
+{% if var >= 90 and var <= 80 %}
+优秀
+{% elif var >= 60 %}
+一般
+{% else %}
+不及格
+{% endif %}
+<p>
+{% if '1' in list3 %}
+1在白名单中
+{% else%}
+1不在白名单中
+{% endif %}
+</p>
+{% if request.user.is_authenticated %}
+	{{request.user.username}},您好！
+{% else %}
+	<a href=www.baidu.com>请登录</a>
+{% endif %}
+<a href="{{ request.path }}?{{ request.GET.urlencode }}&delete=1">当前网址加参数 delete</a>
+</body>
+</html>

@@ -1,4 +1,4 @@
-"""myblog URL Configuration
+"""zqxt_admin URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.0/topics/http/urls/
@@ -14,10 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-import lib.views
+from django.urls import path,include
+from blog import views
+
 
 urlpatterns = [
-	path('',lib.views.index,name='index'),
+	path('add/',views.add,name='add'),
+	path('',views.index,name='home'),
     path('admin/', admin.site.urls),
 ]
+
+
+
+
+
+
