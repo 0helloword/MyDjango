@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}欢迎光临{% endblock title %} - TEST</title>
+   
+    <!-- Bootstrap（前端框架） -->
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+   
+    <style type="text/css">
+    body {
+        padding-top: 80px;
+    }
+    </style>
+    {% block css %}
+         
+    {% endblock css %}
+ 
+    {% block js %}
+         
+    {% endblock js %}
+  </head>
+  <body>
+    <!--navbar-default——指定导航条组件为默认主题,navbar-fixed-top——设置导航条组件固定在顶部； -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">   
+		<div>       
+			<ul class="nav navbar-nav">
+				<li><a href="/index">首页</a></li>
+		       {% for column in nav_display_columns %}				
+					<li><a href="{{ column.get_absolute_url }}">{{ column.name }}</a></li>
+				{% endfor %}
+			</ul>
+		</div>  
+		 <div style="padding-top:15px; text-align: right;padding-right:10px">
+			<a href='/login'>登录</a>&nbsp;&nbsp;&nbsp;<a href='/register'>注册</a>
+		</div>
+    </nav>
+ 
+    <div class="row clearfix">
+        <div>
+            {% block content %}
+                <h1>TEST 新闻网</h1>				
+            {% endblock content %}
+        </div>
+    </div>
+	<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation1">
+    <div class="row clearfix" style="padding-top: 0px;">
+      <div>
+       <div class="well well-sm">
+        <div style="text-align:center;">
+         <a href="/aboutus/disclaimer.html">免责声明</a> |
+         <a href="/aboutus/index.html">关于我们</a>
+        </div> 
+        <div style="padding-top:10px; text-align: center">
+          Copyright &copy; 2019 Powered by TEST All Rights Reserved.
+         <a href="http://www.miitbeian.gov.cn/" rel="nofollow" target="_blank">测试ICP备123号-1</a>
+        </div>
+       </div>
+      </div>
+    </div>
+	</nav>
+   
+    <!--script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+    <！--script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <！--{% include "baidutongji.html" %}
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title>{% block title %}欢迎光临{% endblock title %}-自强学堂</title>
+	
+	{% block css %}
+	{% endblock css %}
+	{% block js %}
+	{% endblock js %}
+	</head>
+	<body>
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav">
+			{% for column in nav_display_columns %}
+				<li><a href="{{ column.get_absolute_url }}">{{ column.name }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+	<h1>自强 新闻网</h1></br>
+		{% block content %}
+			<h1>这里是要修改的数据</h1>
+		{% endblock content %}
+		
+		{% include "baidutongji.html" %}
+	</body>
+</html>	

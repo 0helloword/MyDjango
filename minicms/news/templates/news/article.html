@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ article.title }}
+{% endblock title %}
+
+{% block content %}
+<div style="padding-left:20px;">
+<h2>文章标题：{{ article.title }}</h2>
+<div id="main">  <!--加上autoescape off，endautoescape可解决在后台添加文章内容后前端显示为html代码的问题  -->
+	{% autoescape off %} 
+	{{ article.content }}
+	{% endautoescape %} 
+</div>
+</div>
+{% endblock content %}

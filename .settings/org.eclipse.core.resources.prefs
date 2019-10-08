@@ -1,4 +1,8 @@
 eclipse.preferences.version=1
+encoding//minicms/create_demo_records.py=utf-8
+encoding//minicms/news/models.py=utf-8
+encoding//wechat/lib/models.py=utf-8
+encoding//wechat/lib/views.py=utf-8
 encoding//zqxt/initdb.py=utf-8
 encoding//zqxt/my_aggregate.py=utf-8
 encoding//zqxt/zqxt/test.py=utf-8

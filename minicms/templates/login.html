@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %} 登录 {% endblock title %}
+
+
+{% block content %}
+<div style="padding-top:50px; text-align: center">
+<form action="{% url 'userlogin' %}" method="post" name='userlogin'>
+	{% csrf_token %}
+    账号: <input type="text" name="username"> <br> <br>
+    密码: <input type="text" name="password"> <br> <br>
+    <input type="submit" size='200' value="登&nbsp;&nbsp;&nbsp;录">
+</form>
+</div>
+
+
+{% if messages %}
+			<script>
+        {% for msg in messages %}
+            alert('{{ msg.message }}');
+        {% endfor %}
+    </script>
+{% endif %}
+
+{% endblock content %}

@@ -52,5 +52,71 @@
 	<a href=www.baidu.com>请登录</a>
 {% endif %}
 <a href="{{ request.path }}?{{ request.GET.urlencode }}&delete=1">当前网址加参数 delete</a>
+
+
+<h3>实现在不刷新的情况下显示计算结果到页面上</h3>
+<p>请输入两个数字</p>
+<form action="/learn/add/" method="get">
+    a: <input type="text" id="a" name="a"> <br>
+    b: <input type="text" id="b" name="b"> <br>
+    <p>result: <span id='result'></span></p>
+    <button type="button" id='sum'>提交</button>
+</form>
+
+<div id="dict">Ajax加载字典
+<button type="button" id='showdict'>显示</button></div>
+<p id="dict_result"></p>
+
+
+<div id="list">Ajax加载列表
+<button type="button" id='showlist'>显示</button></div>
+<p id="list_result"></p>
+<br>
+<br>
+<br>
+
+<div id="dict">Ajax加载用户信息字典
+<button type="button" id='showpdict'>显示</button></div>
+<p id="pdict_result"></p>
+
+<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+	//求和a+b
+    $(document).ready(function(){
+      $("#sum").click(function(){
+        var a = $("#a").val();
+        var b = $("#b").val();
+ 
+        $.get("/learn/add/",{'a':a,'b':b}, function(ret){
+            $('#result').html(ret);
+        })
+      })
+      //列表list
+      $('#showlist').click(function(){
+      	$.getJSON('/learn/ajax_list/',function(ret){
+      	//返回值ret在这里是一个列表
+      		for(var i=ret.length-1;i>=0;i--){
+      	//把ret的每一项都显示在网页上
+      		$('#list_result').append(' '+ret[i])
+      		}
+      	})
+      })
+      	//字典dict
+      	$('#showdict').click(function(){
+      		$.getJSON('/learn/ajax_dict/',function(ret){
+      	//返回值ret在这里是一个字典
+      			$('#dict_result').append(ret.twz+'<br>');
+      			})
+      		})
+      	//用户字典dict
+      	$('#showpdict').click(function(){
+      		$.getJSON('/learn/people_dict/', function(ret) {
+    			$.each(ret, function(i,item){
+        // i 为索引，item为遍历值
+    })
+})
+})
+})
+</script>
 </body>
 </html>

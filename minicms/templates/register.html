@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %} 注册 {% endblock title %}
+
+
+{% block content %}
+<div style="padding-top:50px; text-align:center">
+<form action="{% url 'addUser' %}" method="post" name="addUser">
+	{% csrf_token %}
+    请输入账号: <input type="text" name="username"> <br> <br>
+    请输入密码: <input type="text" name="password"> <br> <br>
+	请输入邮箱: <input type="text" name="email"> <br> <br>
+	<input type="submit" value="注&nbsp;&nbsp;&nbsp;&nbsp;册">
+</form>
+</div>
+
+{% if messages %}
+			<script>
+        {% for msg in messages %}
+            alert('{{ msg.message }}');
+        {% endfor %}
+    </script>
+{% endif %}
+
+{% endblock content %}
